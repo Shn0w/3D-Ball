@@ -20,7 +20,7 @@ class Bullet extends GameObject {
     } else{
       lives = 0;
       for(int i =0; i<5; i++){
-        objects.add(new Particle(loc));
+        //objects.add(new Particle(loc));
       }
     }
   }
