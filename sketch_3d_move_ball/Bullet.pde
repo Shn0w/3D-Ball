@@ -3,8 +3,8 @@ class Bullet extends GameObject {
   float speed;
 
   Bullet() {
-    super(eyex, eyey, eyez, 10);
-    speed = 50;
+    super(eyex, eyey, eyez, 8);
+    speed = 80;
     float vx = cos(leftRightAngle);
     float vy = tan(upDownAngle);
     float vz = sin(leftRightAngle);
@@ -15,12 +15,12 @@ class Bullet extends GameObject {
   void act() {
     int hitx = int(loc.x+2000)/gridSize;
     int hity = int(loc.z+2000)/gridSize;
-    if(map.get(hitx, hity) == white){
+    if (map.get(hitx, hity) == white && (loc.y < height && loc.y>height-gridSize*4)) {
       loc.add(dir);
-    } else{
+    } else {
       lives = 0;
-      for(int i =0; i<5; i++){
-        //objects.add(new Particle(loc));
+      for (int i = 0; i<12; i++) {
+        objects.add(new Particle(loc));
       }
     }
   }

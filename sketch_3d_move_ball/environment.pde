@@ -16,8 +16,8 @@ void drawMap() {
 }
 
 void drawFloor(int start, int end, int h, int gap) {
-  stroke(255);
-  strokeWeight(1);
+  world.stroke(255);
+  world.strokeWeight(1);
   int x = start;
   int z = start;
   while (z<end) {

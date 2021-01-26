@@ -1,8 +1,4 @@
 void move() {
-  pushMatrix();
-  translate(focusx, focusy, focusz);
-  sphere(4);
-  popMatrix();
   if (a && canMoveLeft()) { 
     eyex -= cos(leftRightAngle+PI/2)*10;
     eyez -= sin(leftRightAngle+PI/2)*10;
@@ -31,7 +27,8 @@ void move() {
   if (mouseX<2) rbt.mouseMove(width-3, mouseY);
   if (mouseY>height-2) rbt.mouseMove(mouseX, 3);
   if (mouseY<2) rbt.mouseMove(mouseX, height-3);
-}boolean canMoveForward() {
+}
+boolean canMoveForward() {
   float fwdx, fwdy, fwdz;
   int mapx, mapy;
   for (int i = -45; i<=45; i++) {
