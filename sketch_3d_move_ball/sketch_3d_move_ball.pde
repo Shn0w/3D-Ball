@@ -7,6 +7,7 @@ color dullBlue = #7092BE;
 
 PImage mossyStone;
 PImage oakPlanks;
+PImage goomba;
 
 int gridSize;
 PImage map;
@@ -17,6 +18,8 @@ boolean w, a, s, d, space;
 int fireRate;
 float leftRightAngle, upDownAngle;
 Robot rbt;
+
+int goombaRate;
 
 ArrayList<GameObject> objects;
 
@@ -31,6 +34,7 @@ void setup() {
 
   mossyStone = loadImage("Mossy_Stone_Bricks.png");
   oakPlanks = loadImage("Oak_Planks.png");
+  goomba = loadImage("goombaface.jpg");
 
   try {
     rbt = new Robot();
@@ -38,7 +42,12 @@ void setup() {
   catch(Exception e) {
     e.printStackTrace();
   }
-  noCursor();
+  if (frameCount < 2) {
+    rbt.mouseMove(width/2, height/2);
+    mouseX = width/2;
+    mouseY = height/2;
+  }
+  //noCursor();
   size(displayWidth, displayHeight, P2D);
   gridSize = 100;
   eyex = width/2;
@@ -66,31 +75,18 @@ void draw() {
   drawFloor(-2000, 2000, height-gridSize*4, gridSize);
   drawMap();
 
-  if (space && fireRate<=0) {
-    objects.add(new Bullet());
-    fireRate = 5;
-  }
-  if (fireRate>0) {
-    fireRate--;
-  }
-  for (int i =0; i<objects.size(); i++) {
-    GameObject obj = objects.get(i);
-    obj.act();
-    obj.show();
-    if (obj.lives==0) {
-      objects.remove(i);
-      i--;
-    }
-  }
+  spawnGoomba();
+  fire();
   world.endDraw();
   image(world, 0, 0);
-  
+
   HUD.beginDraw();
+  HUD.clear();
   drawCrosshair();
   drawMinimap();
-  
+
   HUD.endDraw();
-  image(HUD,0,0);
+  image(HUD, 0, 0);
 }
 
 

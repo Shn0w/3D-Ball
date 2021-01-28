@@ -5,7 +5,7 @@ class Particle extends GameObject {
   Particle(PVector loc) {
     super(loc.x, loc.y, loc.z, 5);
     dir = new PVector(random(-1, 1), random(-1, 1), random(-1, 1));
-    dir.setMag(20);
+    dir.setMag(14);
     loc.add(dir);
     fill = 255;
     world.fill(fill);
