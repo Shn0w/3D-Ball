@@ -14,8 +14,10 @@ PImage map;
 
 float eyex, eyey, eyez, focusx, focusy, focusz, upx, upy, upz;
 //cam pos, cam facing point, tilt
-boolean w, a, s, d, space;
+boolean w, a, s, d, space, mouse;
 int fireRate;
+int jumpingV;
+int timeInAir;
 float leftRightAngle, upDownAngle;
 Robot rbt;
 
@@ -65,18 +67,22 @@ void setup() {
 void draw() {
   world.beginDraw();
   world.textureMode(NORMAL);
-  world.background(0);
+  world.background(255, 0, 0);
+  world.lightFalloff(1.5, 0, 0);
+
+  //world.ambientLight(255,255,255);
   world.pointLight(255, 255, 255, eyex, eyey, eyez);
   world.camera(eyex, eyey, eyez, focusx, focusy, focusz, upx, upy, upz);
   move();
 
   drawAxis();
   drawFloor(-2000, 2000, height, gridSize);
-  drawFloor(-2000, 2000, height-gridSize*4, gridSize);
   drawMap();
 
+  moveObjects();
   spawnGoomba();
   fire();
+  addFlames();
   world.endDraw();
   image(world, 0, 0);
 

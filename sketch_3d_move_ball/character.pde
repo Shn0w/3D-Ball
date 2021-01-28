@@ -15,6 +15,16 @@ void move() {
     eyex -= cos(leftRightAngle)*10;
     eyez -= sin(leftRightAngle)*10;
   }
+  if (space && eyey>=height-gridSize-100) {
+    eyey -= 17 + (-1*timeInAir);
+  }
+  if (eyey>=height-gridSize-100) {
+    timeInAir=0;
+  } else {
+    timeInAir++;
+    eyey -= 17 + (-1*timeInAir);
+  }
+
   focusx = eyex + cos(leftRightAngle)*100;
   focusy = eyey + tan(upDownAngle)*100;
   focusz = eyez + sin(leftRightAngle)*100;
@@ -38,21 +48,12 @@ void move() {
 }
 
 void fire() {
-  if (space && fireRate<=0) {
+  if (mouse && fireRate<=0) {
     objects.add(new Bullet());
-    fireRate = 7;
+    fireRate = 6;
   }
   if (fireRate>0) {
     fireRate--;
-  }
-  for (int i =0; i<objects.size(); i++) {
-    GameObject obj = objects.get(i);
-    obj.act();
-    obj.show();
-    if (obj.lives==0) {
-      objects.remove(i);
-      i--;
-    }
   }
 }
 

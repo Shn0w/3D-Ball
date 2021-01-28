@@ -13,3 +13,11 @@ void keyReleased() {
   if (key=='d' || key =='D') d = false;
   if(key==' ') space = false;
 }
+
+void mousePressed(){
+  mouse = true;
+}
+
+void mouseReleased(){
+  mouse = false;
+}

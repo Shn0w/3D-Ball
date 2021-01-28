@@ -15,6 +15,17 @@ class Bullet extends GameObject {
   void act() {
     int hitx = int(loc.x+2000)/gridSize;
     int hity = int(loc.z+2000)/gridSize;
+    for (int i = 0; i<objects.size(); i++) {
+      if (objects.get(i) instanceof Goomba) {
+        if (loc.dist(objects.get(i).loc)<=objects.get(i).size + size) {
+          lives = 0;
+          objects.get(i).lives = 0;
+          for (int j = 0; j<17; j++) {
+            objects.add(new Particle(loc));
+          }
+        }
+      }
+    }
     if (map.get(hitx, hity) == white && (loc.y < height && loc.y>height-gridSize*4)) {
       loc.add(dir);
     } else {
