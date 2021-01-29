@@ -15,7 +15,7 @@ PImage map;
 float eyex, eyey, eyez, focusx, focusy, focusz, upx, upy, upz;
 //cam pos, cam facing point, tilt
 boolean w, a, s, d, space, mouse;
-int fireRate;
+int fireRate, cloudRate;
 int jumpingV;
 int timeInAir;
 float leftRightAngle, upDownAngle;
@@ -62,6 +62,9 @@ void setup() {
   upy = 1;
   upz = 0;
   map = loadImage("map.png");
+  for(int i = 0; i<10; i++){
+    objects.add(new Cloud());
+  }
 }
 
 void draw() {
@@ -77,12 +80,14 @@ void draw() {
 
   drawAxis();
   drawFloor(-2000, 2000, height, gridSize);
+  
   drawMap();
 
   moveObjects();
   spawnGoomba();
   fire();
   addFlames();
+  addClouds();
   world.endDraw();
   image(world, 0, 0);
 
@@ -90,7 +95,7 @@ void draw() {
   HUD.clear();
   drawCrosshair();
   drawMinimap();
-
+  
   HUD.endDraw();
   image(HUD, 0, 0);
 }

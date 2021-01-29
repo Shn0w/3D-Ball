@@ -19,15 +19,17 @@ class Bullet extends GameObject {
       if (objects.get(i) instanceof Goomba) {
         if (loc.dist(objects.get(i).loc)<=objects.get(i).size + size) {
           lives = 0;
-          objects.get(i).lives = 0;
+          objects.get(i).lives--;
           for (int j = 0; j<17; j++) {
             objects.add(new Particle(loc));
           }
         }
       }
     }
-    if (map.get(hitx, hity) == white && (loc.y < height && loc.y>height-gridSize*4)) {
+    if (map.get(hitx, hity) == white && loc.y < height && loc.y>-1000) {
       loc.add(dir);
+    } else if (loc.y<=-1000) {
+      lives = 0;
     } else {
       lives = 0;
       for (int i = 0; i<17; i++) {

@@ -11,6 +11,7 @@ void drawMinimap() {
   int miniY = int(eyez+2000)/gridSize;
   HUD.textSize(20);
   HUD.fill(white);
+  HUD.text(frameRate, 500, 500);
   
   HUD.strokeWeight(0);
   HUD.stroke(255, 0, 0);

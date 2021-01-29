@@ -1,15 +1,16 @@
 class Flame extends GameObject {
 
   Flame() {
-    super(random(0, map.width*gridSize)-2000, -10000, random(0, map.height*gridSize)-2000, 5);
+    super(random(-4000, map.width*gridSize), -10000, random(-4000, map.height*gridSize), 3);
   }
 
   void show() {
     world.pushMatrix();
     world.translate(loc.x, loc.y, loc.z);
-    world.fill(255, 0, 0);
+    world.fill(95, 0, 0);
     world.stroke(0);
-    world.box(size, 7, size);
+    world.strokeWeight(1);
+    world.box(size, 8, size);
     world.popMatrix();
   }
 
@@ -23,7 +24,7 @@ class Flame extends GameObject {
 }
 
 void addFlames() {
-  for (int i = 0; i<5; i++) {
+  for (int i = 0; i<7; i++) {
     objects.add(new Flame());
   }
 }

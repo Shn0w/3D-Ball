@@ -61,9 +61,9 @@ boolean canMoveForward() {
   float fwdx, fwdy, fwdz;
   int mapx, mapy;
   for (int i = -45; i<=45; i++) {
-    fwdx = eyex + cos(leftRightAngle+radians(i))*100;
+    fwdx = eyex + cos(leftRightAngle+radians(i))*80;
     fwdy = eyey;
-    fwdz = eyez + sin(leftRightAngle+radians(i))*100;
+    fwdz = eyez + sin(leftRightAngle+radians(i))*80;
     mapx = int(fwdx+2000)/gridSize;
     mapy = int(fwdz+2000)/gridSize;
     if (map.get(mapx, mapy)!=white) {
@@ -77,9 +77,9 @@ boolean canMoveLeft() {
   float fwdx, fwdy, fwdz;
   int mapx, mapy;
   for (int i = -45; i<=45; i++) {
-    fwdx = eyex + cos(leftRightAngle+radians(i)-radians(90))*100;
+    fwdx = eyex + cos(leftRightAngle+radians(i)-radians(90))*80;
     fwdy = eyey;
-    fwdz = eyez + sin(leftRightAngle+radians(i)-radians(90))*100;
+    fwdz = eyez + sin(leftRightAngle+radians(i)-radians(90))*80;
     mapx = int(fwdx+2000)/gridSize;
     mapy = int(fwdz+2000)/gridSize;
     if (map.get(mapx, mapy)!=white) {
@@ -93,9 +93,9 @@ boolean canMoveRight() {
   float fwdx, fwdy, fwdz;
   int mapx, mapy;
   for (int i =-45; i<=45; i++) {
-    fwdx = eyex + cos(leftRightAngle+radians(i)+radians(90))*100;
+    fwdx = eyex + cos(leftRightAngle+radians(i)+radians(90))*80;
     fwdy = eyey;
-    fwdz = eyez + sin(leftRightAngle+radians(i)+radians(90))*100;
+    fwdz = eyez + sin(leftRightAngle+radians(i)+radians(90))*80;
     mapx = int(fwdx+2000)/gridSize;
     mapy = int(fwdz+2000)/gridSize;
     if (map.get(mapx, mapy)!=white) {
@@ -109,9 +109,9 @@ boolean canMoveBackward() {
   float fwdx, fwdy, fwdz;
   int mapx, mapy;
   for (int i = -45; i<=45; i++) {
-    fwdx = eyex + cos(leftRightAngle+radians(i)+radians(180))*100;
+    fwdx = eyex + cos(leftRightAngle+radians(i)+radians(180))*80;
     fwdy = eyey;
-    fwdz = eyez + sin(leftRightAngle+radians(i)+radians(180))*100;
+    fwdz = eyez + sin(leftRightAngle+radians(i)+radians(180))*80;
     mapx = int(fwdx+2000)/gridSize;
     mapy = int(fwdz+2000)/gridSize;
     if (map.get(mapx, mapy)!=white) {
