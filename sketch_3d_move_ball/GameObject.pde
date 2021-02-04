@@ -27,3 +27,15 @@ class GameObject {
     world.popMatrix();
   }
 }
+
+void moveObjects() {
+  for (int i = 0; i<objects.size(); i++) {
+    GameObject obj = objects.get(i);
+    obj.act();
+    obj.show();
+    if (obj.lives==0) {
+      objects.remove(i);
+      i--;
+    }
+  }
+}

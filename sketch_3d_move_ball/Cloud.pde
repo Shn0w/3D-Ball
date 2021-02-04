@@ -2,10 +2,11 @@ class Cloud extends GameObject {
   int xSize;
   int zSize;
   Cloud() {
-    super(random(-5000, map.width*gridSize+1000), -2000, random(-5000, map.height*gridSize+1000), 0);
+    super(random(gridSize*-50, map.width*gridSize + gridSize*10), -2000, random(gridSize*-50, map.height*gridSize + gridSize*10), 0);
     xSize = (int)random(800, 2000);
     zSize = (int)random(800, 2000);
   }
+
   Cloud(int posX, int posZ) {
     super(posX, -2000, posZ, 0);
     xSize = (int)random(800, 2000);
@@ -28,7 +29,7 @@ class Cloud extends GameObject {
 
 void addClouds() {
   if (cloudRate<=0) {
-    objects.add(new Cloud(-5000, (int)random(-5000, map.height*gridSize+1000)));
+    objects.add(new Cloud(gridSize*-50, (int)random(gridSize*-50, map.height*gridSize + gridSize*10 )));
     cloudRate = 150;
   } else {
     cloudRate--;

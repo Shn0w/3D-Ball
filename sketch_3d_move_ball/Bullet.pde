@@ -4,7 +4,7 @@ class Bullet extends GameObject {
 
   Bullet() {
     super(eyex, eyey, eyez, 8);
-    speed = 80;
+    speed = 100;
     float vx = cos(leftRightAngle);
     float vy = tan(upDownAngle);
     float vz = sin(leftRightAngle);
@@ -20,6 +20,9 @@ class Bullet extends GameObject {
         if (loc.dist(objects.get(i).loc)<=objects.get(i).size + size) {
           lives = 0;
           objects.get(i).lives--;
+          if (objects.get(i).lives==0) {
+            numGoombaDead++;
+          }
           for (int j = 0; j<17; j++) {
             objects.add(new Particle(loc));
           }

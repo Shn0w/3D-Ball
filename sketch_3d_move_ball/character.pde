@@ -1,34 +1,41 @@
-void move() {
+void moveChar() {
+  if(charLives == 0){
+    mode = END;
+  }
+  float speed = 8 + 3*ms;
   if (a && canMoveLeft()) { 
-    eyex -= cos(leftRightAngle+PI/2)*10;
-    eyez -= sin(leftRightAngle+PI/2)*10;
+    eyex -= cos(leftRightAngle+PI/2)*speed;
+    eyez -= sin(leftRightAngle+PI/2)*speed;
   }
   if (d && canMoveRight()) {
-    eyex += cos(leftRightAngle+PI/2)*10;
-    eyez += sin(leftRightAngle+PI/2)*10;
+    eyex += cos(leftRightAngle+PI/2)*speed;
+    eyez += sin(leftRightAngle+PI/2)*speed;
   }
   if (w && canMoveForward()) {
-    eyex += cos(leftRightAngle)*10;
-    eyez += sin(leftRightAngle)*10;
+    eyex += cos(leftRightAngle)*speed;
+    eyez += sin(leftRightAngle)*speed;
   }
   if (s && canMoveBackward()) { 
-    eyex -= cos(leftRightAngle)*10;
-    eyez -= sin(leftRightAngle)*10;
+    eyex -= cos(leftRightAngle)*speed;
+    eyez -= sin(leftRightAngle)*speed;
   }
   if (space && eyey>=height-gridSize-100) {
-    eyey -= 17 + (-1*timeInAir);
+    charIsJumping = true;
+    beforeJump = new PVector(eyex, eyey, eyez);
+    eyey -= (12 + jumpHeight*3) + (-0.6*timeInAir);
   }
   if (eyey>=height-gridSize-100) {
+    charIsJumping = false;
     timeInAir=0;
   } else {
     timeInAir++;
-    eyey -= 17 + (-1*timeInAir);
+    eyey -= (12 + jumpHeight*3) + (-0.6*timeInAir);
   }
 
   focusx = eyex + cos(leftRightAngle)*100;
   focusy = eyey + tan(upDownAngle)*100;
   focusz = eyez + sin(leftRightAngle)*100;
-  if (mouseX>width-2) { 
+  if (mouseX>width-2) {
     rbt.mouseMove(3, mouseY);
   }  
   if (mouseX<2) {
@@ -48,12 +55,13 @@ void move() {
 }
 
 void fire() {
-  if (mouse && fireRate<=0) {
+  if (mouse && fireRateTimer<=0 && ammo>0) {
     objects.add(new Bullet());
-    fireRate = 6;
+    fireRateTimer = 8 - fireRate;
+    ammo--;
   }
-  if (fireRate>0) {
-    fireRate--;
+  if (fireRateTimer>0) {
+    fireRateTimer--;
   }
 }
 

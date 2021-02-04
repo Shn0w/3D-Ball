@@ -1,7 +1,7 @@
 class Flame extends GameObject {
 
   Flame() {
-    super(random(-4000, map.width*gridSize), -10000, random(-4000, map.height*gridSize), 3);
+    super(random(gridSize*-40, map.width*gridSize), -10000, random(gridSize*-40, map.height*gridSize), 3);
   }
 
   void show() {
@@ -27,4 +27,10 @@ void addFlames() {
   for (int i = 0; i<7; i++) {
     objects.add(new Flame());
   }
+}
+
+void dja(){
+  Flame a = new Flame();
+  
+  float tmp = a.lives;
 }

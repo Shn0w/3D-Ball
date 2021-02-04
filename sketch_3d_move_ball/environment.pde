@@ -6,10 +6,14 @@ void drawMap() {
         texturedCube(x*gridSize-2000, height-gridSize, y*gridSize-2000, mossyStone, gridSize);
         texturedCube(x*gridSize-2000, height-gridSize*2, y*gridSize-2000, mossyStone, gridSize);
         texturedCube(x*gridSize-2000, height-gridSize*3, y*gridSize-2000, mossyStone, gridSize);
+        texturedCube(x*gridSize-2000, height-gridSize*4, y*gridSize-2000, mossyStone, gridSize);
+        texturedCube(x*gridSize-2000, height-gridSize*5, y*gridSize-2000, mossyStone, gridSize);
       } else if (c==black) {
         texturedCube(x*gridSize-2000, height-gridSize, y*gridSize-2000, oakPlanks, gridSize);
         texturedCube(x*gridSize-2000, height-gridSize*2, y*gridSize-2000, oakPlanks, gridSize);
         texturedCube(x*gridSize-2000, height-gridSize*3, y*gridSize-2000, oakPlanks, gridSize);
+        texturedCube(x*gridSize-2000, height-gridSize*4, y*gridSize-2000, oakPlanks, gridSize);
+        texturedCube(x*gridSize-2000, height-gridSize*5, y*gridSize-2000, oakPlanks, gridSize);
       }
     }
   }
@@ -21,7 +25,7 @@ void drawFloor(int start, int end, int h, int gap) {
   int x = start;
   int z = start;
   while (z<end) {
-    texturedCube(x, h, z, oakPlanks, gap);
+    texturedCube(x, h, z, dirt, gap);
     x+=gap;
     if (x>=end) {
       x=start;
